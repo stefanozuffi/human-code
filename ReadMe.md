@@ -26,21 +26,31 @@ Per ogni giocatore, sum(giocatore) = 0;
 - Per i <= n: 
    - Finché sum(player_i) < 21:
      - il banco chiede al giocatore se vuole che venga pescata una carta:
+
          se si:
-          - il banco pesca una carta dal mazzo
-          - la dà a player_i
-         se no:
-          - passa a player_(i+1)
-   
+           - il banco pesca una carta dal mazzo
+           - la dà a player_i
+           se la carta è un asso: 
+              - player_i sceglie se la carta ha valore 1 o 11;
+              - aggiungere il valore scelto della carta a sum(player_i)
+           altrimenti:
+              - aggiungere il valore della carta a sum(player_i)
+
    - Passa a player_(i+1)
 
 
 - Il banco scopre la sua carta
 - aggiungere valore carta a sum(banco)
 
-- Finché sum(banco) <= 17: 
+- Finché sum(banco) < 17: 
    - il banco pesca una carta
-   - aggiungere valore carta a sum(banco)
+      se la carta è un asso: 
+            - banco sceglie se la carta ha valore 1 o 11;
+            - aggiungere il valore scelto della carta a sum(banco)
+      altrimenti:
+            - aggiungere il valore della carta a sum(banco)
+
+  
 
 - Il banco si ferma e la mano finisce. 
 
@@ -61,7 +71,7 @@ Se sum(banco) <= 21:
 
      altrimenti: 
         - il banco guadagna la puntata del player_i:
-            - aggiungere 2*Puntata(player_i) a $-$(banco);
+            - aggiungere Puntata(player_i) a $-$(banco);
             - settare Puntata(player_i) a 0;
     
 
